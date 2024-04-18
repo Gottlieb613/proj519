@@ -16,8 +16,8 @@ def find_closest_city(latitude, longitude, api_key):
                 return component['long_name']
 
 
-latitude = 50.9699
-longitude = 0.4160
+latitude = 19.0760
+longitude = 72.8777
 
 closest_city = find_closest_city(latitude, longitude, api_key)
 print("Closest city:", closest_city)
