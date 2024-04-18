@@ -1,8 +1,15 @@
+
 from streetview import search_panoramas, get_streetview
 import re
 
-charlie_api_key = "AIzaSyDEfSRd6SvLjAeM6t1OGEAvDN_i6OjDIi0"
-    #plz dont share
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Access the API key
+api_key = os.getenv("GOOGLE_API_KEY")
 
 def get_id_from_pano(pano): #weirdly can't subscript the Panorama object to get pano_id so use regex on string representation of obj
     pattern = r"pano_id='([^']+)'"
@@ -28,7 +35,7 @@ with open("London/__files.csv", "w") as f:
 
                 image = get_streetview(
                     pano_id=id,
-                    api_key=charlie_api_key
+                    api_key=api_key
                 )
 
                 image.save(f"London/{id}.jpg", "jpeg")
